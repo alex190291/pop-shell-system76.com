@@ -477,8 +477,14 @@ export class Tiler {
         this.move(ext, window ?? this.window, 1, 0, 0, 0, Direction.Right, move_window_or_monitor(ext, ext.focus_selector.right, Meta.DisplayDirection.RIGHT));
     }
     resize(ext, direction) {
-        if (!this.window)
-            return;
+        if (!this.window) {
+            const win = ext.focus_window && ext.focus_window();
+            if (win) {
+                this.window = win.entity;
+            } else {
+                return;
+            }
+        }
         this.resizing_window = true;
         if (ext.auto_tiler && !ext.contains_tag(this.window, Tags.Floating)) {
             this.resize_auto(ext, direction);

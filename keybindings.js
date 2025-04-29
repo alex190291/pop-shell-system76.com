@@ -33,6 +33,10 @@ export class Keybindings {
             'pop-monitor-down': () => ext.move_monitor(Meta.DisplayDirection.DOWN),
             'pop-workspace-up': () => ext.move_workspace(Meta.DisplayDirection.UP),
             'pop-workspace-down': () => ext.move_workspace(Meta.DisplayDirection.DOWN),
+            'tile-resize-left': () => ext.tiler.resize(ext, 0),   // Direction.Left
+            'tile-resize-up': () => ext.tiler.resize(ext, 1),     // Direction.Up
+            'tile-resize-right': () => ext.tiler.resize(ext, 2),  // Direction.Right
+            'tile-resize-down': () => ext.tiler.resize(ext, 3),   // Direction.Down
         };
     }
     enable(keybindings) {
